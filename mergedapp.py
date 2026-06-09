@@ -191,6 +191,7 @@ def fetch_corridor_products(isins):
             product = data.get("product", {})
 
             product_name = product.get("identification", {}).get("name")
+            settlement_type = product.get("payoff", {}).get("settlementType")
             initial_fixing_date = product.get("calendar", {}).get("initialFixingDate")
             last_trading_date = product.get("calendar", {}).get("lastTradingDate")
             investment_currency = product.get("investment", {}).get("investmentCurrency")
@@ -274,6 +275,7 @@ def fetch_corridor_products(isins):
                     all_rows.append({
                         "ISIN": isin,
                         "Product Name": product_name,
+                        "Settlement Type": settlement_type,
                         "Underlying": underlying.get("shortName"),
                         "Initial Fixing Date": initial_fixing_date,
                         "Expiration Date": last_trading_date,
@@ -295,6 +297,7 @@ def fetch_corridor_products(isins):
             all_rows.append({
                 "ISIN": isin,
                 "Product Name": f"ERROR: {e}",
+                "Settlement Type": None,
                 "Underlying": None,
                 "Initial Fixing Date": None,
                 "Expiration Date": None,
