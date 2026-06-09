@@ -191,6 +191,7 @@ def fetch_corridor_products(isins):
             product = data.get("product", {})
 
             product_name = product.get("identification", {}).get("name")
+            ticker = product.get("identifiers", {}).get("bloombergTicker")
             settlement_type = product.get("payoff", {}).get("settlementType")
             initial_fixing_date = product.get("calendar", {}).get("initialFixingDate")
             last_trading_date = product.get("calendar", {}).get("lastTradingDate")
@@ -276,7 +277,7 @@ def fetch_corridor_products(isins):
                         "ISIN": isin,
                         "Product Name": product_name,
                         "Settlement Type": settlement_type,
-                        "Ticker" = identifiers.get("bloombergTicker"),
+                        "Ticker" = ticker,
                         "Initial Fixing Date": initial_fixing_date,
                         "Last Trading Date": last_trading_date,
                         "Investment Currency": investment_currency,
