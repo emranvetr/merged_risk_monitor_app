@@ -276,7 +276,7 @@ def fetch_corridor_products(isins):
                         "ISIN": isin,
                         "Product Name": product_name,
                         "Settlement Type": settlement_type,
-                        "Ticker" = identifiers.get("bloombergTicker")
+                        "Ticker" = identifiers.get("bloombergTicker"),
                         "Initial Fixing Date": initial_fixing_date,
                         "Last Trading Date": last_trading_date,
                         "Investment Currency": investment_currency,
